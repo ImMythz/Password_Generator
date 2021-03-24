@@ -1,7 +1,6 @@
 # Password_Generator
 
 ## Description
-
 Password generator that can include different password criteria
 These are the specifications of the password generator
 
@@ -23,6 +22,6 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 '''
-## Screenshot
 
+## Screenshot
 <img src='docs\Assets\Password_Generator_Screenshot.PNG' alt='Password Generator Screnshot'>
