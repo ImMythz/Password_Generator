@@ -1,9 +1,12 @@
 # Password_Generator
-Password generator that can include different password criteria
 
+## Description
+
+Password generator that can include different password criteria
 These are the specifications of the password generator
 
-```
+## User Story
+
 GIVEN I need a new, secure password
 WHEN I click the button to generate a password
 THEN I am presented with a series of prompts for password criteria
@@ -19,4 +22,7 @@ WHEN all prompts are answered
 THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
-```
+
+## Screenshot
+
+<img src='docs/Assets/Password_Generator_Screenshot.PNG' alt='Password Generator Screnshot'>
