@@ -24,4 +24,4 @@ THEN the password is either displayed in an alert or written to the page
 ```
 
 ## Screenshot
-<img src='docs\Assets\Password_Generator_Screenshot.PNG' alt='Password Generator Screnshot'>
+<img src='docs\Assets\Password_Generator_Screenshot.png' alt='Password Generator Screnshot'>
