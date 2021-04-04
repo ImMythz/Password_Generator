@@ -1,8 +1,7 @@
 # Password_Generator
 
 ## Description
-Password generator that can include different password criteria
-These are the specifications of the password generator
+This is a password generator application. The user can choose between different criteria to include in their password and a random password will generated based on the user selected criteria. You also have the option to copy your generated password to your clipboard.
 
 ## User Story
 ```
