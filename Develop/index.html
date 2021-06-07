@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +7,7 @@
     <title>Password Generator</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
-
     <div class="wrapper">
       <header>
         <h1>Password Generator</h1>
@@ -19,29 +16,6 @@
         <div class="card-header">
           <h2>Generate a Password</h2>
         </div>
-            <div class="settings">
-		<div class="setting">
-			<label>Password length (8-128)</label>
-      <!--Limits the length of the password to 8-128 characters-->
-			<input type="number" id="length" min='8' max='128' value='8' />
-		</div>
-		<div class="setting">
-			<label>Include uppercase letters</label> 
-			<input type="checkbox" id="uppercase" checked />
-        </div>
-        <div class="setting">
-			<label>Include lowercase letters</label> 
-			<input type="checkbox" id="lowercase" checked />
-        </div>
-        <div class="setting">
-			<label>Include numbers</label> 
-			<input type="checkbox" id="numbers" checked />
-		</div>
-		<div class="setting">
-			<label>Include symbols</label> 
-			<input type="checkbox" id="symbols" checked />
-		</div>
-    </div>
         <div class="card-body">
           <textarea
             readonly
@@ -52,12 +26,9 @@
         </div>
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>
-          <button class="btn btn-large" id="clipboard">Copy to clipboard</button>
         </div>
       </div>
     </div>
-
     <script src="script.js"></script>
   </body>
-
 </html>
