@@ -65,7 +65,9 @@ function generatePassword() {
   console.log(generatedPassword);
   console.log(passwordPrompt);
   for (let i = generatedPassword.length; i < passwordPrompt; i++) {
-
+    const randomChar = '';
+    generatedPassword += randomChar;
+    console.log(randomChar);
   }
   console.log(generatedPassword);
   return generatedPassword;
