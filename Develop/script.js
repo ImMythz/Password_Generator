@@ -55,8 +55,24 @@ const randomPrompts = {
 }
 
 // Generates the password
-function generatePassword(lower, upper, number, symbol, passwordPrompt) {
+function generatePassword(lowercasePrompt, uppercasePrompt, numberPrompt, symbolPrompt, lower, upper, number, symbol, passwordPrompt) {
+  let generatedPassword = '';
+  if (lowercasePrompt == true) {
+    generatedPassword += lower.randomLowercase()
+  }
+  if (uppercasePrompt == true) {
+    generatedPassword += upper.randomUppercase()
+  }
+  if (numberPrompt == true) {
+    generatedPassword += number.randomNumber()
+  }
+  if (symbolPrompt == true) {
+    generatedPassword += symbol.randomSymbol()
+  }
 
+  for (let i = generatedPassword.length; i < parseInt(passwordPrompt); i++) {}
 }
+
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
