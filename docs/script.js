@@ -15,7 +15,7 @@ function writePassword() {
 function generatePassword() {
   let generatedPassword = '';
   const passwordPrompt = prompt('How many characters would you like you password to be? (8-128)');
-  if (passwordPrompt < 8) {
+  if (passwordPrompt < 8 <= 128) {
     alert("Password length must be between 8 and 128 characters");
     console.log(passwordPrompt);
     return;
