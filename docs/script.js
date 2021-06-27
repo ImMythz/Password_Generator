@@ -1,94 +1,109 @@
-const symbols = '!@#$%^&*()=<>,./[]{}';
-
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+const generateBtn = document.querySelector("#generate");
+const passwordEl = document.getElementById('password');
+const lengthEl = document.getElementById('length');
+const uppercaseEl = document.getElementById('uppercase');
+const lowercaseEl = document.getElementById('lowercase');
+const numbersEl = document.getElementById('numbers');
+const symbolsEl = document.getElementById('symbols');
+const clipboard = document.getElementById('clipboard');
+
+// Object holding functions for later
+const randomFunc = {
+	lower: randomLowercase,
+	upper: randomUppercase,
+	number: randomNumeric,
+	symbol: randomSpecialChar,
+}
+
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  finalAlert()
+  const password = generatePassword();
+  const passwordText = document.querySelector("#password");
+
   passwordText.value = password;
-}
 
-// Password generating function
-function generatePassword() {
-  let generatedPassword = '';
-  const passwordPrompt = prompt('How many characters would you like you password to be? (8-128)');
-  if (passwordPrompt < 8 <= 128) {
-    alert("Password length must be between 8 and 128 characters");
-    console.log(passwordPrompt);
-    return;
-  }
-
-  // User prompts
-  const lowercasePrompt = confirm("Would you like to include lowercase letters?");
-  const uppercasePrompt = confirm("Would you like to include uppercase letters?");
-  const numberPrompt = confirm("Would you like to include numbers?");
-  const symbolPrompt = confirm("Would you like to include symbols or special characters?");
-
-  // Lowercase function
-  function lowercaseFunc() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-  }
-
-  // Uppercase function
-  function uppercaseFunc() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-  }
-
-  // Numeric function
-  function numberFunc() {
-    return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-  }
-
-  // and/or special characters function
-  function symbolFunc() {
-    return symbols[Math.floor(Math.random() * symbols.length)];
-  }
-
-  // Object with randomizer functions inside
-  const randomPrompts = {
-    lower: lowercaseFunc,
-    upper: uppercaseFunc,
-    number: numberFunc,
-    symbol: symbolFunc,
-  }
-
-  // Empty array for selected criteria to be added to 
-  const typesCriteria = [];
-
-  // Checks to see if you selected the particular criteria
-  if (lowercasePrompt == true) {
-    generatedPassword += randomPrompts.lower();
-    typesCriteria.push(randomPrompts.lower);
-  }
-  if (uppercasePrompt == true) {
-    generatedPassword += randomPrompts.upper();
-    typesCriteria.push(randomPrompts.upper);
-  }
-  if (numberPrompt == true) {
-    generatedPassword += randomPrompts.number();
-    typesCriteria.push(randomPrompts.number);
-  }
-  if (symbolPrompt == true) {
-    generatedPassword += randomPrompts.symbol();
-    typesCriteria.push(randomPrompts.symbol);
-  }
-
-  // Loops over criteria to generate password
-  for (let i = generatedPassword.length; i < passwordPrompt; i++) {
-    const randomChar = Object.values(typesCriteria)[0]();
-    generatedPassword += randomChar;
-  }
-  // Returns password
-  return generatedPassword;
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click'", writePassword,);
 
-// Finished password alert
-function finalAlert() {
-  window.alert("Your pasword has been created");
+// Check boxes for each password criteria
+generate.addEventListener('click', () => {
+	const length = lengthEl.value;
+	const hasLower = lowercaseEl.checked;
+	const hasUpper = uppercaseEl.checked;
+	const hasNumber = numbersEl.checked;
+	const hasSymbol = symbolsEl.checked;
+
+	passwordEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+});
+
+
+// Lowercase function
+function randomLowercase() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
+
+console.log(randomLowercase());
+
+// Uppercase function
+function randomUppercase() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+}
+
+console.log(randomUppercase());
+
+// Numeric function
+function randomNumeric() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+}
+
+console.log(randomNumeric());
+
+// and/or special characters function
+function randomSpecialChar() {
+  const symbols = '!@#$%^&*()=<>,./[]{}';
+  return symbols[Math.floor(Math.random() * symbols.length)];
+}
+
+console.log(randomSpecialChar());
+
+
+// WHEN I clicked #generate the password shows on screen and an alert pops up
+function generatePassword(lower, upper, number, symbol, length) {
+	let generatedPassword = '';
+	const typesCount = lower + upper + number + symbol;
+	const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
+
+	if(typesCount === 0) {
+		return '';
+  }
+	
+	// create a loop
+	for(let i=0; i<length; i+=typesCount) {
+		typesArr.forEach(type => {
+			const funcName = Object.keys(type)[0];
+			generatedPassword += randomFunc[funcName]();
+		});
+	}
+	
+  const finalPassword = generatedPassword.slice(0, length);
+  window.alert("Your pasword has been created");
+	
+  return finalPassword;
+}
+
+// give option to copy password to clipboard
+clipboard.addEventListener('click', () => {
+	passwordEl.select();
+  document.execCommand('copy');
+	alert('Password copied to clipboard');
+});
+
+
+
+
+// WHEN password is written an ALERT box pops up indicating the password was made
+// window.alert("Your pasword has been created");
